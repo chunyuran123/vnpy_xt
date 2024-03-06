@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta, time
-from typing import Optional, Callable
+from typing import Optional, Callable, Dict
 from pathlib import Path
 
 from pandas import DataFrame
@@ -17,18 +17,18 @@ from vnpy.trader.utility import ZoneInfo, TEMP_DIR
 from vnpy.trader.datafeed import BaseDatafeed
 
 
-INTERVAL_VT2XT: dict[Interval, str] = {
+INTERVAL_VT2XT: Dict[Interval, str] = {
     Interval.MINUTE: "1m",
     Interval.DAILY: "1d",
     Interval.TICK: "tick"
 }
 
-INTERVAL_ADJUSTMENT_MAP: dict[Interval, timedelta] = {
+INTERVAL_ADJUSTMENT_MAP: Dict[Interval, timedelta] = {
     Interval.MINUTE: timedelta(minutes=1),
     Interval.DAILY: timedelta()         # 日线无需进行调整
 }
 
-EXCHANGE_VT2XT: dict[str, Exchange] = {
+EXCHANGE_VT2XT: Dict[str, Exchange] = {
     Exchange.SSE: "SH",
     Exchange.SZSE: "SZ",
     Exchange.BSE: "BJ",
